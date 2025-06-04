@@ -14,9 +14,10 @@ function changeMainImage(thumbnail) {
 }
 
 // product size button color change on click
-function changeButtonColor(button) {
+function changeButtonColor(button, optionsDiv) {
     const target = document.getElementById(button)
-    const buttons = document.querySelectorAll('.productsizebuttonclicked');
+    
+    const buttons = optionsDiv.querySelectorAll('.productsizebuttonclicked');
     // Reset all buttons to default color
     buttons.forEach(btn => btn.classList.remove('productsizebuttonclicked'));
     buttons.forEach(btn => btn.classList.add('productsizebutton'));
@@ -234,7 +235,7 @@ function displayOptions(options, product, productId, text) {
       button.style.marginBottom = "5px"; 
 
       button.onclick = function() {
-        changeButtonColor(this.id);
+        changeButtonColor(this.id, optionsDiv);
         const priceElement = document.getElementById("productpageprice");
         if (product.differentPrices) {
           priceElement.textContent = option.price;

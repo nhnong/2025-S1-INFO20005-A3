@@ -196,18 +196,50 @@ div.productthumbnail {
     align-items: center;
 }
 
-div.productquantity {
+div.cartquantity {
     display: flex;
     align-items: center;
-    width: 100px;
     margin-bottom: 10px;
 
 }
 
 /*CART*/
 /*-----------------------------------------------------------*/
+.cartcategory {
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    gap: 50px;
+}
 
+.cartordersummary {
+    display: flex;
+    flex-direction: column;
+}
 
+.cartproductslist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500px;
+}
+
+.cartcost {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cartproduct {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+div.cartimgandproduct {
+    justify-items: center;
+}
 
 /*GENERAL FLEX DIRECTION*/
 /*-----------------------------------------------------------*/
@@ -241,6 +273,8 @@ div.homebookinginner {
     align-items: center;
     width: 100%;
 }
+
+
 
 /* LINK */
 /*-----------------------------------------------------------*/
@@ -294,6 +328,15 @@ a.anav:hover {
     margin-right: 10px;
 }
 
+.cartproductimg {
+    width: 160px;
+    height: 160px;
+    border-radius: 25px;
+    box-shadow: #aaa6ac 0px 2px 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 /* BUTTONS */
 /*-----------------------------------------------------------*/
 
@@ -326,10 +369,10 @@ a.anav:hover {
     height: 30px;
     border-radius: 5px;
     border: none;
-    background-color: #F7AE96;
     font-weight: bold;
     padding-left: 10px;
     padding-right: 10px;
+    background-color: transparent;
 }
 
 .iconbutton:hover {
@@ -390,7 +433,6 @@ button.homebooking {
     color: #62546A;
     background: none;
     border: none;
-    margin-bottom: 10px;
 }
 
 .productaddrem:hover {
@@ -419,10 +461,22 @@ button.homebooking {
     border-radius: 5px;
     border: 1.5px solid #b37b79;
     padding-left: 10px;
-    padding-right: 15px;
+    padding-right: 10px;
     font-size: 9px;
     color: #62546A;
     text-align: center;
+}
+
+.quantityinput {
+    height: 27px;
+    border-radius: 5px;
+    border: 1.5px solid #b37b79;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 9px;
+    color: #62546A;
+    text-align: center;
+    width: 50px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -449,10 +503,6 @@ p, .productprice {
     font-size: 12px;
 }
 
-.shopproducttitle:hover {
-    text-decoration: underline;
-}
-
 p.eightpx{
     font-size: 8px;
 }
@@ -477,20 +527,33 @@ h2.center {
     font-size: 10px;
 }
 
-h4.shopproducttitle {
+.shopproducttitle {
     font-family: "Reddit Sans", Helvetica;
     color: #62546A;
     font-weight: bold;
     margin: 20px 0 0 0;
 }
 
-.productbreakline {
+
+
+hr.productbreakline {
     width: 100%;       
     border: none;
     border-top: 1px solid #ccc;  
     margin-top: 10px;  
 }
 
+hr.cartbreakline {
+    width: 100%;       
+    border: none;
+    border-top: 2px solid #62546A;
+    margin-bottom: 20px;
+}
+
 p.italic {
     font-style: italic;
+}
+
+p.bold {
+    font-weight: bold;
 }
