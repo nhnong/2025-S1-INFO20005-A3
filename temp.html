@@ -1,0 +1,54 @@
+        <div class="productinfo">
+            <p>CATEGORY</p>
+            <h4 class="shopproducttitle" id="productpagetitle">Fluid Art Painting Kit</h4>
+            <p class="productprice" id="productpageprice">$49.99</p>
+            <hr class="productbreakline">
+            <p class="eightpx">Select Size</p>
+            <div class="productsize" id="productpagesize">
+                <button class="productsizebutton" id="size1" onclick="changeButtonColor('size1')">18cm</button>
+                <button class="productsizebutton" id="size2" onclick="changeButtonColor('size2')">23cm</button>
+                <button class="productsizebutton" id="size3" onclick="changeButtonColor('size3')">32cm</button>
+                <button class="productsizebutton" id="size4" onclick="changeButtonColor('size4')">52cm</button>
+            </div>
+            <div class="productquantity">
+                <p class="eightpx">Quantity</p>
+                <button class="productaddrem" onclick="changequantity(-1)">−</button>
+                <input type="number" id="quantityinput" value="1" min="1">
+                <button class="productaddrem" onclick="changequantity(1)">+</button>
+            </div>
+            <hr class="productbreakline">
+            <button class="buttonpink homebooking">Add to Cart</button>
+        </div>
+
+
+
+// showing matching products on click
+function matchProducts(productId) {
+  const product = products[productId];
+  console.log(product);
+  if (!product) return;
+
+  const title = document.getElementById("productpagetitle");
+  const image = document.getElementById("productpageimage");
+  const price = document.getElementById("productpageprice");
+  // const optionsDiv = document.getElementById("product-options");
+
+  if (title) title.textContent = product.title;
+  if (image) image.src = product.image;
+  if (price) price.textContent = product.price;
+
+}
+
+
+window.onload = function () {
+  const productId = localStorage.getItem("selectedProduct");
+  if (productId) matchProducts(productId);
+};
+
+
+
+// line 45 product
+                <button class="productsizebutton" id="size1" onclick="changeButtonColor('size1')">18cm</button>
+                <button class="productsizebutton" id="size2" onclick="changeButtonColor('size2')">23cm</button>
+                <button class="productsizebutton" id="size3" onclick="changeButtonColor('size3')">32cm</button>
+                <button class="productsizebutton" id="size4" onclick="changeButtonColor('size4')">52cm</button>

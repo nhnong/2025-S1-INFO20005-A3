@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="global.css">
+    <script src="home.js"></script>
+</head>
+
+<body class="homebody">
+    <header class="homeheader marginbottom" >
+        <img src="photologo.png" alt="Logo" class="imglogo">
+        <div class="homeheadernav">
+            <a href="pagehome.html" class="anav">HOME</a>
+            <a href="pagebooking.html" class="anav">BOOKING</a>
+            <a href="pageshop.html" class="anav">SHOP</a>            
+            <a href="pageabout.html" class="anav">ABOUT</a>
+            <a href="pagecontact.html" class="anav">CONTACT</a>
+        </div>
+        <div class="homeheadersearch">
+            <input type="text" placeholder="Search..." class="searchinput">
+            <a href="pagecart.html">
+                <button class="iconbutton"> <img src="symbolcart.png" alt="Cart" class="headericon"> </button>
+            </a>
+        </div>
+    </header>   
+
+    <div class="productbanner rowflex">
+        <div class="images">
+            <img alt="Product Image" class="productimage" id="productpageimage">
+            <div class="productthumbnail">
+                <img alt="Thumbnail 1" class="productthumbnailimage" id="thumbnail1" onclick=changeMainImage(this)>
+                <img alt="Thumbnail 2" class="productthumbnailimage" id="thumbnail2" onclick=changeMainImage(this)>
+                <img alt="Thumbnail 3" class="productthumbnailimage" id="thumbnail3" onclick=changeMainImage(this)>
+            </div>
+        </div>
+
+        <div class="productinfo" id="productpageinfo">
+            <p>CATEGORY</p>
+            <h4 class="shopproducttitle" id="productpagetitle"></h4>
+            <p class="productprice" id="productpageprice"></p>
+            <hr class="productbreakline">
+            <div id="productpageoptions">
+
+            </div>
+            <p class="eightpx">Quantity</p>
+            <div class="productquantity">
+                <button class="productaddrem" onclick="changequantity(-1)">−</button>
+                <input type="number" id="quantityinput" value="1" min="1">
+                <button class="productaddrem" onclick="changequantity(1)">+</button>
+            </div>
+            <hr class="productbreakline">
+            <button class="buttonpink homebooking">Add to Cart</button>
+        </div>
+    </div>
+
+
+
+
+</body>

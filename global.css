@@ -145,7 +145,7 @@ div.shopbanner {
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 30px;
-    max-width: calc((240px * 3) + (30px * 2));
+    max-width: calc((250px * 3) + (30px * 2));
     padding-top: 40px;
 
 }
@@ -159,8 +159,55 @@ div.shopbanner {
     border-radius: 10px;
     margin-bottom: 0px;
     padding-bottom: 10px;
-    width: 240px
+    width: 250px;
+    box-shadow: #aaa6ac 0px 2px 5px;
 }
+
+/*PRODUCT*/
+/*-----------------------------------------------------------*/
+div.productinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 50px;
+}
+
+div.productbanner {
+    justify-content: center;
+    margin-top: 20px;
+    align-items: flex-start;
+    width: fit-content
+}
+
+div.productoptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+div.productthumbnail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.productquantity {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    margin-bottom: 10px;
+
+}
+
+/*CART*/
+/*-----------------------------------------------------------*/
+
+
 
 /*GENERAL FLEX DIRECTION*/
 /*-----------------------------------------------------------*/
@@ -174,6 +221,10 @@ div.columnflex {
 div.rowflex {
     display: flex;
     margin: 0 auto;
+}
+
+.marginbottom {
+    margin-bottom: 40px;
 }
 
 div.homebookingtext {
@@ -227,6 +278,20 @@ a.anav:hover {
     width: 100%;
     height: 250px;
     border-radius: 10px 10px 0 0;
+}
+
+.productimage {
+    height: 300px;
+    border-radius: 25px;
+    box-shadow: #aaa6ac 0px 2px 5px;
+    margin-bottom: 15px;
+}
+
+.productthumbnailimage {
+    width: calc(300px/3 - 15px);
+    height: calc(300px/3 - 15px);
+    border-radius: 15px;
+    margin-right: 10px;
 }
 
 /* BUTTONS */
@@ -284,7 +349,8 @@ a.anav:hover {
 }
 
 button.homebooking {
-    width: 170px
+    width: 90%;
+    align-self: center;
 }
 
 .buttonpinkalignstart {
@@ -298,7 +364,42 @@ button.homebooking {
 
 }
 
-/* SELECT */
+.productsizebutton {
+    height: 30px;
+    border-radius: 5px;
+    border: 1.5px solid #b37b79;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+    font-size: 9px;
+    background-color: #FFEBEB;
+    color: #62546A;
+}
+
+.productsizebutton:active {
+    background-color: #FFE7C5;
+}
+
+.productsizebuttonclicked {
+    background-color: #FFE7C5;
+}
+
+.productaddrem {
+    font-size: 15px;
+    font-weight: bold;;
+    color: #62546A;
+    background: none;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.productaddrem:hover {
+    color: #b37b79;
+    transform: scale(1.05);
+
+}
+
+/* INPUT */
 /*-----------------------------------------------------------*/
 .shopselect {
     height: 30px;
@@ -311,6 +412,23 @@ button.homebooking {
     background-color: #FFEBEB;
     color: #62546A;
     font-weight: bold;
+}
+
+#quantityinput {
+    height: 27px;
+    border-radius: 5px;
+    border: 1.5px solid #b37b79;
+    padding-left: 10px;
+    padding-right: 15px;
+    font-size: 9px;
+    color: #62546A;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Removes the default appearance */
+    margin: 0; /* Sometimes needed to remove any residual space */
 }
 
 
@@ -329,6 +447,14 @@ p, .productprice {
     font-weight: 400;
     color: #62546A;
     font-size: 12px;
+}
+
+.shopproducttitle:hover {
+    text-decoration: underline;
+}
+
+p.eightpx{
+    font-size: 8px;
 }
 
 p.bannerp {
@@ -356,4 +482,15 @@ h4.shopproducttitle {
     color: #62546A;
     font-weight: bold;
     margin: 20px 0 0 0;
+}
+
+.productbreakline {
+    width: 100%;       
+    border: none;
+    border-top: 1px solid #ccc;  
+    margin-top: 10px;  
+}
+
+p.italic {
+    font-style: italic;
 }

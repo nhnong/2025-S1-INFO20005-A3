@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="global.css">
+    <script src="home.js"></script>
 </head>
 
 <body class="homebody">
@@ -19,7 +20,10 @@
         </div>
         <div class="homeheadersearch">
             <input type="text" placeholder="Search..." class="searchinput">
-            <button class="iconbutton"> <img src="symbolcart.png" alt="Cart" class="headericon"> </button>
+            <a href="pagecart.html">
+                <button class="iconbutton"> <img src="symbolcart.png" alt="Cart" class="headericon"> </button>
+            </a>
+        </div>
     </header>   
 
 
@@ -47,51 +51,86 @@
 
     <div class="shopproducts rowflex">
         <div class="productcard">
-            <img src="photobear5.webp" alt="Product 1" class="shopproductimage">
-            <h4 class="shopproducttitle">Fluid Art Painting Kit</h4>
-            <p class="productprice">$49.99</p>
+            <img src="photobearsize.jpg" alt="Product 1" class="shopproductimage">
+            <a href="pageproduct.html" id="product1" class="productfluid" onclick="selectProducts('product1')">
+                <h4 class="shopproducttitle">DIY Fluid Bear Painting Kit</h4>
+            </a>
+            <p class="productprice italic">Price varies by size</p>
+            <p class="productprice">From $50.00</p>
         </div>
+
         <div class="productcard">
-            <img src="photobear6.webp" alt="Product 2" class="shopproductimage">
-            <h4 class="shopproducttitle">Acrylic Pouring Set</h4>
-            <p class="productprice">$39.99</p>
+            <img src="photoproduct4.png" alt="Product 2" class="shopproductimage">
+            <a href="pageproduct.html" id="product2" class="productfluid" onclick="selectProducts('product2')">
+                <h4 class="shopproducttitle" >DIY Fluid Melody Kit</h4>
+            </a>
+            <p class="productprice italic">23cm</p>
+            <p class="productprice">$75.00</p>
         </div>
+
         <div class="productcard">
             <img src="photoproduct1.jpg" alt="Product 3" class="shopproductimage">
-            <h4 class="shopproducttitle">Canvas Set - 5 Pack</h4>
-            <p class="productprice">$29.99</p>
+            <a href="pageproduct.html" id="product3" class="productfluid" onclick="selectProducts('product3')">
+                <h4 class="shopproducttitle">DIY Fluid Kuromi Kit</h4>
+            </a>
+            <p class="productprice italic">23cm</p>
+            <p class="productprice">$75.00</p>
         </div>
+
         <div class="productcard">
-            <img src="photoproduct1.jpg" alt="Product 3" class="shopproductimage">
-            <h4 class="shopproducttitle">Canvas Set - 5 Pack</h4>
-            <p class="productprice">$29.99</p>
+            <img src="photoproduct5.png" alt="Product 4" class="shopproductimage">
+            <a href="pageproduct.html" id="product4" class="productfluid" onclick="selectProducts('product4')">
+                <h4 class="shopproducttitle">DIY Fluid Balloon Dog Kit</h4>
+            </a>
+            <p class="productprice italic">23cm</p>
+            <p class="productprice">$75.00</p>
         </div>
+
         <div class="productcard">
-            <img src="photoproduct1.jpg" alt="Product 3" class="shopproductimage">
-            <h4 class="shopproducttitle">Canvas Set - 5 Pack</h4>
-            <p class="productprice">$29.99</p>
+            <img src="photoproduct8phonecase.webp" alt="Product 5" class="shopproductimage">
+            <a href="pageproduct.html" id="product5" class="productdecoden" onclick="selectProducts('product5')">
+                <h4 class="shopproducttitle">DIY Decoden Phone Case Kit</h4>
+            </a>
+            <p class="productprice italic">Available for Iphone cases</p>
+            <p class="productprice">$65.00</p>
         </div>
+
         <div class="productcard">
-            <img src="photoproduct1.jpg" alt="Product 3" class="shopproductimage">
-            <h4 class="shopproducttitle">Canvas Set - 5 Pack</h4>
-            <p class="productprice">$29.99</p>
-        </div>        
+            <img src="photoproduct9airpod.jpeg" alt="Product 6" class="shopproductimage">
+            <a href="pageproduct.html" id="product6" class="productdecoden" onclick="selectProducts('product6')">
+                <h4 class="shopproducttitle">DIY Decoden Airpod Case Kit</h4>
+            </a>
+            <p class="productprice italic">Available for Aipods (3rd Gen)</p>
+            <p class="productprice">$35.00</p>
+        </div>    
+
         <div class="productcard">
-            <img src="photoproduct1.jpg" alt="Product 3" class="shopproductimage">
-            <h4 class="shopproducttitle">Canvas Set - 5 Pack</h4>
-            <p class="productprice">$29.99</p>
+            <img src="photoproduct7.webp" alt="Product 7" class="shopproductimage">
+            <a href="pageproduct.html" id="product7" class="productdecoden" onclick="selectProducts('product7')">
+                <h4 class="shopproducttitle">DIY Decoden Brush Mirror Kit</h4>
+            </a>
+            <p class="productprice italic">7cm</p>
+            <p class="productprice">$35.00</p>
         </div> 
+
         <div class="productcard">
-            <img src="photoproduct1.jpg" alt="Product 3" class="shopproductimage">
-            <h4 class="shopproducttitle">Canvas Set - 5 Pack</h4>
-            <p class="productprice">$29.99</p>
+            <img src="photoproductdecodenhandmirror.webp" alt="Product 8" class="shopproductimage">
+            <a href="pageproduct.html" id="product8" class="productdecoden" onclick="selectProducts('product8')">
+                <h4 class="shopproducttitle">DIY Decoden Hand Mirror Kit</h4>
+            </a>
+            <p class="productprice italic">7cm</p>
+            <p class="productprice">$35.00</p>
         </div> 
+
         <div class="productcard">
-            <img src="photoproduct1.jpg" alt="Product 3" class="shopproductimage">
-            <h4 class="shopproducttitle">Canvas Set - 5 Pack</h4>
-            <p class="productprice">$29.99</p>
+            <img src="photoproduct10decodenframe.jpg" alt="Product 9" class="shopproductimage">
+            <a href="pageproduct.html" id="product9" class="productdecoden" onclick="selectProducts('product9')">
+                <h4 class="shopproducttitle">DIY Decoden Mirror Kit</h4>
+            </a>
+            <p class="productprice italic">Available in 3 styles</p>
+            <p class="productprice">$80.00</p>
         </div> 
-        <!-- Add more product cards as needed -->
+
     </div>
     
     <footer class="homefooter">
