@@ -10,7 +10,7 @@ body {
 
 /* HOMEPAGE */
 /*-----------------------------------------------------------*/
-.homebody {
+.homebody, .productbody, .cartbody {
     background-color: #FFEBEB;
 }
 
@@ -548,7 +548,7 @@ button.shopcontinue {
     text-align: center;
 }
 
-.quantityinput {
+.quantityinput, .cartquantityinput {
     height: 27px;
     border-radius: 5px;
     border: 1.5px solid #b37b79;

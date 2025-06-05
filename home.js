@@ -165,6 +165,9 @@ function selectProducts(productId) {
 
 // showing matching products on click
 function matchProducts(productId) {
+
+  if (!document.body.classList.contains("productbody")) return;
+
   const product = products[productId];
   if (!product) return;
 
@@ -219,6 +222,7 @@ function displayOptions(options, product, productId, text) {
     
     beforeOptions.appendChild(optionsTitle);
     beforeOptions.appendChild(optionsDiv);
+
 
     options.forEach(option => {
       const button = document.createElement("button");
@@ -289,7 +293,7 @@ function openOverlay() {
 }
 
 function saveToCart() {
-  //localStorage.removeItem('cartProducts')
+  // localStorage.removeItem('cartProducts')
 
   // need image, title, price, attributes (select button class=clicked)
   const img = document.getElementById('productpageimage'); // select first image instead
@@ -336,6 +340,9 @@ function saveToCart() {
     quantity: quantityFloat,
     remove: 'remove'+productId,
   }
+  if (currentProduct.description == "") {
+    delete currentProduct.description;
+  }
     
   if (cart[productId]) {
       cart[productId].quantity += currentProduct.quantity;
@@ -359,7 +366,9 @@ function displayOverlay(productId) {
   let cart = JSON.parse(localStorage.getItem('cartProducts'));
   document.getElementById('overlayproductname').textContent = cart[productId].title; // title
   document.getElementById('overlayproductprice').textContent = cart[productId].price; // price
-  document.getElementById('overlaydescription').textContent = cart[productId].description; // desc
+  if (cart[productId].description) {
+    document.getElementById('overlaydescription').textContent = cart[productId].description; // desc
+  }
   document.querySelector('.overlaycartproductimg').src = cart[productId].image; // image
 }
 
@@ -367,10 +376,79 @@ function displayOverlay(productId) {
 document.addEventListener('DOMContentLoaded', function() {
 
   displayCartItems();
+  // delete items (trash icon)
+  // add quantity +
+  // remove quantity -
+  // inputing value
+
 
 });
 
-function displayCartItems(){
-    let cart = JSON.parse(localStorage.getItem('cartProducts'));
 
+const htmlSnippet = `
+    <div class="aligncenter">
+      <img class="cartproductimg">
+        <div class="cartquantity">
+          <button class="productaddrem" onclick="changequantity(-1)">−</button>
+          <input type="number" class="cartquantityinput" min="1">
+          <button class="productaddrem" onclick="changequantity(1)">+</button>
+          <button class="iconbutton"><img src="symboltrash.png" alt="Delete" class="headericon"></button>   
+        </div>
+    </div>
+    <div>
+      <a href="pageproduct.html">
+        <p class="shopproducttitle">Product Name</p>
+      </a>
+      <p class="cartproductprice"></p>
+      <p class="cartproductdesc"></p>
+    </div>
+`;  
+
+function displayCartItems(){
+  
+    let cart = JSON.parse(localStorage.getItem('cartProducts'));
+    if (!cart) return;
+    if (!document.body.classList.contains("cartbody")) return;
+
+    let outerDiv = document.querySelector('.cartproductslist');
+    let totalPrice = 0;
+
+    for (item in cart) {
+      console.log(cart[item].title);
+      // console.log(cart[item].image);
+      console.log(cart[item].price);
+      if (cart[item].description) {
+        console.log(cart[item].description);
+      }
+
+      productDiv = document.createElement("div");
+      productDiv.className = 'cartproduct';
+      productDiv.id = 'cart'+cart[item].id;
+
+      productBreakline = document.createElement("hr");
+      productBreakline.className = 'productbreakline'
+
+      // inserting the html display of item added to cart, and assigning user selected details
+      productDiv.insertAdjacentHTML('beforeend', htmlSnippet);
+
+      productDiv.querySelector('.cartproductimg').src = cart[item].image;
+      productDiv.querySelector('.shopproducttitle').textContent = cart[item].title;
+      productDiv.querySelector('.cartproductprice').textContent = '$'+cart[item].totalPrice.toFixed(2);
+      quantityCount = productDiv.querySelector('.cartquantityinput');
+      quantityCount.id = 'quantity'+cart[item].id;
+      quantityCount.value = cart[item].quantity;
+
+
+      if (cart[item].description) {
+        productDiv.querySelector('.cartproductdesc').textContent = cart[item].description;
+      }
+
+      outerDiv.appendChild(productDiv);
+      outerDiv.appendChild(productBreakline);
+
+      totalPrice += cart[item].totalPrice;
+    }
+    // displaying total prices
+    document.getElementById('cartsubtotal').textContent = '$'+totalPrice.toFixed(2);
+    document.getElementById('carttotal').textContent = '$'+totalPrice.toFixed(2);
 }

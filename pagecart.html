@@ -8,7 +8,7 @@
     <script src="home.js"></script>
 </head>
 
-<body class="homebody">
+<body class="cartbody">
     <header class="homeheader">
         <img src="photologo.png" alt="Logo" class="imglogo">
         <div class="homeheadernav">
@@ -33,66 +33,8 @@
         <div class="cartproductslist">
             <p>PRODUCT</p>
             <hr class="cartbreakline">
-            <div class="cartproduct">
 
-                <div class="aligncenter">
-                    <img class="cartproductimg" src="photobearsize.jpg">
-                    <div class="cartquantity">
-                        <button class="productaddrem" onclick="changequantity(-1)">−</button>
-                        <input type="number" class="quantityinput" value="1" min="1">
-                        <button class="productaddrem" onclick="changequantity(1)">+</button>
-                        <button class="iconbutton"><img src="symboltrash.png" alt="Delete" class="headericon"></button>   
-                    </div>
-                </div>
-                <div>
-                    <a href="pageproduct.html">
-                        <p class="shopproducttitle">Product Name</p>
-                    </a>
-                    <p>Description</p>
-                    <p>Description</p>
-                </div>
-            </div>
-            <hr class="productbreakline">
 
-            <div class="cartproduct">
-                <div class="aligncenter">
-                    <img class="cartproductimg" src="photobearsize.jpg">
-                    <div class="cartquantity">
-                        <button class="productaddrem" onclick="changequantity(-1)">−</button>
-                        <input type="number" class="quantityinput" value="1" min="1">
-                        <button class="productaddrem" onclick="changequantity(1)">+</button>
-                        <button class="iconbutton"><img src="symboltrash.png" alt="Delete" class="headericon"></button>   
-                    </div>
-                </div>
-                <div>
-                    <a href="pageproduct.html">
-                        <p class="shopproducttitle">Product Name</p>
-                    </a>
-                    <p>Description</p>
-                    <p>Description</p>
-                </div>
-            </div>
-            <hr class="productbreakline">
-
-            <div class="cartproduct">
-                <div class="cartimgandproduct">
-                    <img class="cartproductimg" src="photobearsize.jpg">
-                    <div class="cartquantity">
-                        <button class="productaddrem" onclick="changequantity(-1)">−</button>
-                        <input type="number" class="quantityinput" value="1" min="1">
-                        <button class="productaddrem" onclick="changequantity(1)">+</button>
-                        <button class="iconbutton"><img src="symboltrash.png" alt="Delete" class="headericon"></button>   
-                    </div>
-                </div>
-                <div>
-                    <a href="pageproduct.html">
-                        <p class="shopproducttitle">Product Name</p>
-                    </a>
-                    <p>Description</p>
-                    <p>Description</p>
-                </div>
-            </div>
-            <hr class="productbreakline">
         </div>
 
         <div class="cartordersummary">
@@ -101,7 +43,7 @@
             <p>Apply a promotional code?</p>
             <div class="cartcost">
                 <p class="bold">Subtotal</p>
-                <p id="cartsubtotal">Cost</p>
+                <p id="cartsubtotal">-</p>
             </div>
             <div class="cartcost">
                 <p class="bold">Shipping</p>
@@ -109,7 +51,7 @@
             </div>
             <div class="cartcost">
                 <p class="bold">Total</p>
-                <p id="carttotal">Cost</p>
+                <p id="carttotal">-</p>
             </div>
         </div>
 
