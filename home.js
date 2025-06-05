@@ -271,7 +271,7 @@ function closeOverlay() {
   }
 }
 
-// revealing overlay after adding to cart
+// opening overlay after clicking 'add to cart'
 function openOverlay() {
   const content = document.getElementById('shopmodalcontent');
   const overlay = document.getElementById('shopmodaloverlay');
@@ -289,7 +289,7 @@ function openOverlay() {
 }
 
 function saveToCart() {
-  // localStorage.removeItem('cartProducts')
+  //localStorage.removeItem('cartProducts')
 
   // need image, title, price, attributes (select button class=clicked)
   const img = document.getElementById('productpageimage'); // select first image instead
@@ -320,24 +320,32 @@ function saveToCart() {
 
   productId = productId.toLowerCase().replace(/\s/g, '');
 
+  let priceString = price.textContent.replace(/[^0-9.]/g, "");
   let cart = JSON.parse(localStorage.getItem('cartProducts')) || {};
+  let priceFloat = parseFloat(priceString);
+  let quantityFloat = parseFloat(quantity);
+
 
   const currentProduct = {
     id: productId,
     title: title.textContent,
     image: img.src,
     price: price.textContent,
+    priceFloat: priceFloat,
     description: descriptionString,
-    quantity: parseFloat(quantity)
+    quantity: quantityFloat,
+    remove: 'remove'+productId,
   }
     
   if (cart[productId]) {
       cart[productId].quantity += currentProduct.quantity;
+      cart[productId].totalPrice += (currentProduct.quantity)*(cart[productId].priceFloat);
   } else {
       cart[productId] = currentProduct;
+      cart[productId].totalPrice = (currentProduct.quantity)*(currentProduct.priceFloat);
   }
 
-  // save
+  // save item to local storage
   localStorage.setItem('cartProducts', JSON.stringify(cart));
   const savedCart = JSON.parse(localStorage.getItem('cartProducts'));
   console.log("Cart data retrieved from localStorage:", savedCart);
@@ -345,11 +353,24 @@ function saveToCart() {
   return productId;
 }
 
+// show correct product title, image, description and price on the added to cart overlay
 function displayOverlay(productId) {
   console.log(productId);
-  let cart = JSON.parse(localStorage.getItem('cartProducts')) || {};
+  let cart = JSON.parse(localStorage.getItem('cartProducts'));
   document.getElementById('overlayproductname').textContent = cart[productId].title; // title
-  document.getElementById('overlayproductprice').textContent = cart[productId].price; // title
-  document.getElementById('overlaydescription').textContent = cart[productId].description; // title
-  document.querySelector('.overlaycartproductimg').src = cart[productId].image;
+  document.getElementById('overlayproductprice').textContent = cart[productId].price; // price
+  document.getElementById('overlaydescription').textContent = cart[productId].description; // desc
+  document.querySelector('.overlaycartproductimg').src = cart[productId].image; // image
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  displayCartItems();
+
+});
+
+function displayCartItems(){
+    let cart = JSON.parse(localStorage.getItem('cartProducts'));
+
 }
