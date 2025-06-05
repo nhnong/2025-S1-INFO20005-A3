@@ -26,7 +26,7 @@
         </div>
     </header>   
 
-    <div class="productbanner rowflex">
+    <div id="productbanner" class="rowflex">
         <div class="images">
             <img alt="Product Image" class="productimage" id="productpageimage">
             <div class="productthumbnail">
@@ -38,7 +38,7 @@
 
         <div class="productinfo" id="productpageinfo">
             <p>CATEGORY</p>
-            <h4 class="shopproducttitle" id="productpagetitle"></h4>
+            <h4 class="shopproducttitle"></h4>
             <p class="productprice" id="productpageprice"></p>
             <hr class="productbreakline">
             <div id="productpageoptions">
@@ -47,15 +47,37 @@
             <p class="eightpx">Quantity</p>
             <div class="productquantity">
                 <button class="productaddrem" onclick="changequantity(-1)">−</button>
-                <input type="number" id="quantityinput" value="1" min="1">
+                <input type="number" id="productquantityinput" value="1" min="1">
                 <button class="productaddrem" onclick="changequantity(1)">+</button>
             </div>
             <hr class="productbreakline">
-            <button class="buttonpink homebooking">Add to Cart</button>
+            <button class="buttonpink homebooking margintop" onclick="openOverlay()">Add to Cart</button>
         </div>
     </div>
 
-
-
+    <div id="shopmodaloverlay" class="displaynone">
+        <div id="shopmodalcontent" class="displaynone">
+            <div class="shopmodaltop">
+                <div class="shopcartadded">
+                    <img src="symbolcheck.png" class="headericon">
+                    <p>Item added to Cart</p>
+                </div>
+                <button class="iconbutton shopclose" onclick="closeOverlay()"><img src="symbolx.png" class="headericon"></button>
+            </div>
+            
+            <hr class="productbreakline marginbottom20px">
+            <div class="overlaycartproduct">
+                <img class="overlaycartproductimg">
+                <div class="overlayproductdetails">
+                    <p id="overlayproductname" class="bold"></p> 
+                    <p id="overlayproductprice"></p>
+                    <hr class="productbreakline">
+                    <p id="overlaydescription"></p>
+                </div>
+            </div>
+            
+            <a href="pagecart.html"><button class="buttonpink">Go to Cart</button></a>
+        </div>
+    </div>    
 
 </body>

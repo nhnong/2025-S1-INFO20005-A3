@@ -174,7 +174,7 @@ div.productinfo{
     margin-left: 50px;
 }
 
-div.productbanner {
+#productbanner {
     justify-content: center;
     margin-top: 20px;
     align-items: flex-start;
@@ -201,6 +201,58 @@ div.cartquantity {
     align-items: center;
     margin-bottom: 10px;
 
+}
+
+div.shopmodaltop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center; 
+}
+
+div.shopcartadded {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#shopmodaloverlay {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(5px);
+}
+
+#shopmodalcontent {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px; 
+    width: 300px; 
+    max-width: 500px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative; 
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+}
+
+.overlaycartproduct {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;  
+}
+
+.overlayproductdetails {
+    align-items: flex-start;
+    justify-content: left;
 }
 
 /*CART*/
@@ -259,6 +311,10 @@ div.rowflex {
     margin-bottom: 40px;
 }
 
+.marginbottom20px {
+    margin-bottom: 20px;
+}
+
 div.homebookingtext {
     margin-top: 100px;
     width: 50%;
@@ -274,6 +330,21 @@ div.homebookinginner {
     width: 100%;
 }
 
+.marginzero {
+    margin: 0;
+}
+
+.margintop {
+    margin-top: 20px;
+}
+
+.paddingzero {
+    padding: 0;
+}
+
+div.displaynone {
+    display: none;
+}
 
 
 /* LINK */
@@ -337,6 +408,10 @@ a.anav:hover {
     margin-top: 10px;
 }
 
+.overlaycartproductimg {
+    width: 100px;
+}
+
 /* BUTTONS */
 /*-----------------------------------------------------------*/
 
@@ -387,7 +462,6 @@ a.anav:hover {
     font-weight: bold;
     padding-left: 10px;
     padding-right: 10px;
-    margin-top: 20px;
     border: 0.5px solid #62546A;
 }
 
@@ -441,6 +515,13 @@ button.homebooking {
 
 }
 
+button.shopcontinue {
+    width: fit-content;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+}
+
 /* INPUT */
 /*-----------------------------------------------------------*/
 .shopselect {
@@ -456,7 +537,7 @@ button.homebooking {
     font-weight: bold;
 }
 
-#quantityinput {
+#productquantityinput {
     height: 27px;
     border-radius: 5px;
     border: 1.5px solid #b37b79;
@@ -534,8 +615,6 @@ h2.center {
     margin: 20px 0 0 0;
 }
 
-
-
 hr.productbreakline {
     width: 100%;       
     border: none;
@@ -556,4 +635,13 @@ p.italic {
 
 p.bold {
     font-weight: bold;
+}
+
+p.underline {
+    text-decoration: underline;
+}
+
+p.overlayproductname, p.overlayproductprice {
+    margin: 0;
+    padding: 0;
 }

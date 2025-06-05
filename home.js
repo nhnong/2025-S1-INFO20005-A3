@@ -1,6 +1,6 @@
 // product quantity incrementor 
 function changequantity(amount) {
-  const input = document.getElementById("quantityinput");
+  const input = document.getElementById("productquantityinput");
   let newValue = parseInt(input.value) + amount;
   if (newValue < 1) newValue = 1;
   input.value = newValue;
@@ -24,6 +24,10 @@ function changeButtonColor(button, optionsDiv) {
 
     // Add clicked color to the selected button
     target.classList.add('productsizebuttonclicked');
+}
+
+cartProducts = {
+
 }
 
 // record of products
@@ -95,10 +99,10 @@ const products = {
   product6: {
     title: "DIY Decoden Airpod Case Kit",
     image: "photoproduct9airpod.jpeg",
-    description: "Available for AirPods (3rd Gen)",
+    description: "Available 2 types",
     price: "$35.00",
     options: [
-      { name: "AirPods (3rd Gen)", price: "$35.00" },
+      { name: "AirPods 3rd Gen", price: "$35.00" },
       { name: "AirPods Pro", price: "$35.00" }
     ],
     colours: [
@@ -164,7 +168,8 @@ function matchProducts(productId) {
   const product = products[productId];
   if (!product) return;
 
-  const title = document.getElementById("productpagetitle");
+  const title = document.querySelector(".shopproducttitle")
+  title.id = productId+'title';
   const image = document.getElementById("productpageimage");
   const price = document.getElementById("productpageprice");
   // const optionsDiv = document.getElementById("product-options");
@@ -251,3 +256,100 @@ window.onload = function () {
   const productId = localStorage.getItem("selectedProduct");
   if (productId) matchProducts(productId);
 };
+
+
+// closing added to cart overlay
+function closeOverlay() {
+  const content = document.getElementById('shopmodalcontent');
+  const overlay = document.getElementById('shopmodaloverlay');
+
+  if (overlay && content) {
+    overlay.classList.add("displaynone")
+  }
+  else {
+    console.warn('Element not found');
+  }
+}
+
+// revealing overlay after adding to cart
+function openOverlay() {
+  const content = document.getElementById('shopmodalcontent');
+  const overlay = document.getElementById('shopmodaloverlay');
+
+  productId = saveToCart()
+  displayOverlay(productId)
+
+  if (overlay && content) {
+    overlay.classList.remove("displaynone")
+  }
+  else {
+    console.warn('Element not found');
+  }
+
+}
+
+function saveToCart() {
+  // localStorage.removeItem('cartProducts')
+
+  // need image, title, price, attributes (select button class=clicked)
+  const img = document.getElementById('productpageimage'); // select first image instead
+
+  const title = document.querySelector('.shopproducttitle');
+  titleId = title.id;
+  croppedTitleId = titleId.slice(0,8);
+
+  const price = document.getElementById('productpageprice');
+  const descriptions = document.getElementsByClassName('productsizebuttonclicked');
+  const quantity = document.getElementById('productquantityinput').value;
+
+  // id of specific item that has been added to cart 
+  productId = croppedTitleId;
+  descriptionString = "";
+
+  if (descriptions) {
+    for (const description of descriptions) {
+      productId = productId + description.textContent;
+      if (descriptionString == ""){
+        descriptionString = descriptionString + description.textContent
+      }
+      else {
+        descriptionString = descriptionString + ", " + description.textContent
+      }
+    }
+  }
+
+  productId = productId.toLowerCase().replace(/\s/g, '');
+
+  let cart = JSON.parse(localStorage.getItem('cartProducts')) || {};
+
+  const currentProduct = {
+    id: productId,
+    title: title.textContent,
+    image: img.src,
+    price: price.textContent,
+    description: descriptionString,
+    quantity: parseFloat(quantity)
+  }
+    
+  if (cart[productId]) {
+      cart[productId].quantity += currentProduct.quantity;
+  } else {
+      cart[productId] = currentProduct;
+  }
+
+  // save
+  localStorage.setItem('cartProducts', JSON.stringify(cart));
+  const savedCart = JSON.parse(localStorage.getItem('cartProducts'));
+  console.log("Cart data retrieved from localStorage:", savedCart);
+  
+  return productId;
+}
+
+function displayOverlay(productId) {
+  console.log(productId);
+  let cart = JSON.parse(localStorage.getItem('cartProducts')) || {};
+  document.getElementById('overlayproductname').textContent = cart[productId].title; // title
+  document.getElementById('overlayproductprice').textContent = cart[productId].price; // title
+  document.getElementById('overlaydescription').textContent = cart[productId].description; // title
+  document.querySelector('.overlaycartproductimg').src = cart[productId].image;
+}
