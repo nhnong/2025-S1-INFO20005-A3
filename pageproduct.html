@@ -10,19 +10,27 @@
 
 <body class="productbody">
     <header class="homeheader marginbottom" >
-        <img src="photologo.png" alt="Logo" class="imglogo">
+        <div class="homemenudiv">
+            <button class="iconbutton" id="menuiconbutton" onclick="toggleMenu()">
+                <img src="symbolmenu.png" alt="Menu" class="headericon" id="menuicon">
+            </button>
+        </div>
+        <a class="logolink" href="pagehome.html">
+            <img src="photologo.png" alt="Logo" class="imglogo">
+        </a>
         <div class="homeheadernav">
             <a href="pagehome.html" class="anav">HOME</a>
-            <a href="pagebooking.html" class="anav">BOOKING</a>
+            <a  class="anav">BOOKING</a>
             <a href="pageshop.html" class="anav">SHOP</a>            
-            <a href="pageabout.html" class="anav">ABOUT</a>
-            <a href="pagecontact.html" class="anav">CONTACT</a>
+            <a  class="anav">ABOUT</a>
+            <a  class="anav">CONTACT</a>
         </div>
         <div class="homeheadersearch">
             <input type="text" placeholder="Search..." class="searchinput">
             <a href="pagecart.html">
                 <button class="iconbutton"> <img src="symbolcart.png" alt="Cart" class="headericon"> </button>
             </a>
+        </div>
         </div>
     </header>   
 

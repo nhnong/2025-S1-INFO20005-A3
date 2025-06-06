@@ -56,3 +56,47 @@ window.onload = function () {
 
 continue shopping
             <button class="shopcontinue" onclick="closeOverlay()"><p>Continue Shopping</p></button>
+
+
+
+            function changequantity(amount, inputId) {
+  console.log("Change quantity called with amount:", amount, "and inputId:", inputId);
+  const input = document.getElementById(inputId);
+  const productId = String(input).slice(6); // Extract product ID from input ID
+  let cart = JSON.parse(localStorage.getItem('cartProducts')) || {};
+  let totalPrice = parseFloat(localStorage.getItem('cartTotalPrice')) || 0;
+  
+  if (!cart[productId]) return; // Check if product exists in cart
+
+  const quantity = parseInt(input.value);
+  if (isNaN(quantity) || quantity < 1) {
+    input.value = 1; 
+    cart[productId].quantity = 1;
+  } else {
+    cart[productId].quantity = quantity;
+  }
+
+  cart[productId].totalPrice = cart[productId].priceFloat * cart[productId].quantity; 
+  localStorage.setItem('cartProducts', JSON.stringify(cart));
+  totalPrice = Object.values(cart).reduce((sum, item) => sum + item.totalPrice, 0); // Recalculate total price
+  
+  document.querySelector('.cartproductslist').innerHTML = ''; 
+  displayCartItems(); 
+}
+
+
+
+
+      // making quantity buttons responsive
+      const addButton = productDiv.querySelector('.cartproductadd');
+      addButton.id = 'add'+cart[item].id;
+      addButton.setAttribute('onclick', `changequantity(-1, '${addButton.id}')`);
+
+      const removeButton = productDiv.querySelector('.cartproductrem');
+      removeButton.id = 'rem'+cart[item].id; // Set the ID for the remove button
+      removeButton.setAttribute('onclick', `changequantity(1, '${removeButton.id}')`); // Add onclick event to change quantity
+
+      // making quantity input responsive
+      const quantityInput = productDiv.querySelector('.cartquantityinput');
+      quantityInput.id = 'input'+cart[item].id; // Set the ID for the quantity input
+      quantityInput.setAttribute('onchange', `changequantity(this.value, '${quantityInput.id}')`); // Add onchange event to change quantity

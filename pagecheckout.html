@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="global.css">
+    <script src="home.js"></script>
+</head>
+<body class="checkoutbody">
+    <div class="checkoutheader">
+        <div class="checkoutheaderlogo">
+            <a class="logolink" href="pagehome.html">
+                <img src="photologo.png" alt="Logo" class="imglogo">
+            </a>
+            <h2>CHECKOUT</h2>
+        </div>
+        <div class="checkoutheadercart">
+            <a href="pagecart.html">
+                <button class="iconbutton"> <img src="symbolcart.png" alt="Cart" class="headericon"> </button>
+            </a>
+        </div>
+    </div>
+    <hr class="checkoutbreakline"> 
+    <div class="checkoutmain">
+        <div class="checkoutform">
+            <h3>Billing Details</h3>
+            <form class="formpersonalinfo">
+                <label for="formname"> <p class="margincheckout">Name*</p></label>
+                <input type="text" class="checkoutinput" name="name" id="formname" placeholder="Firstname Lastname" autocomplete="name">
+
+                <label for="formemail"><p class="margincheckout">Email*</p></label>
+                <input type="email" class="checkoutinput" name="email" id="formemail" placeholder="example@email.com" autocomplete="email">
+
+                <label for="formphonenumber"><p class="margincheckout">Phone Number*</p></label>
+                <input type="text"  class="checkoutinput" name="phonenumber" id="formphonenumber" autocomplete="tel" placeholder="123-456-7890">
+
+            </form>
+                        
+            <h3>Delivery Details</h3>
+            <form class="formpersonalinfo">
+                <label for="formaddress"><p class="margincheckout">Address*</p></label>
+                <input type="text"  class="checkoutinput" name="address" id="formaddress" placeholder="Street, House Number" autocomplete="street-address">
+
+                <label for="formcity"><p class="margincheckout">City*</p></label>
+                <input type="text"  class="checkoutinput" name="city" id="formcity" placeholder="City" autocomplete="address-level2">
+
+                <label for="formzip"><p class="margincheckout">Zip Code*</p></label>
+                <input type="text"  class="checkoutinput" name="zip" id="formzip" placeholder="1234" autocomplete="postal-code">
+            </form>
+
+
+            <h3>Payment Details</h3>
+            <form class="formpersonalinfo">
+                <label for="formcardholdername"><p class="margincheckout">Card Holdername*</p></label>
+                <input type="text"  class="checkoutinput" name="cardholdername" id="formcardholdername" placeholder="Firstname Lastname" autocomplete="cc-name">
+
+                <label for="formcardnumber"><p class="margincheckout">Card Number*</p></label>
+                <input type="text"  class="checkoutinput" name="cardnumber" id="formcardnumber" placeholder="0000 0000 0000 0000" autocomplete="cc-number">
+
+                <label for="formcardexpiration"><p class="margincheckout">Card Expiration Data*</p></label>
+                <input type="text"  class="checkoutinput" name="cardexpiration" id="formcardexpiration" placeholder="mm/yy" autocomplete="cc-exp-month">
+
+                <label for="formcardcvv"><p class="margincheckout">CVV/CVC*</p></label>
+                <input type="text"  class="checkoutinput" name="cardexpiration" id="formcardcvv" placeholder="123" autocomplete="cc-csc">
+            </form>
+            <a href="pagecheckoutcomplete.html">
+                <button class="checkoutcomplete">Complete Purchase</button>
+            </a>
+        </div>
+
+
+        <div class="checkoutsummary">
+            <p>ORDER SUMMARY</p>
+            <hr class="cartbreakline">
+            <div class="cartcost">
+                <p class="bold">Subtotal</p>
+                <p id="checkoutsubtotal"></p>
+            </div>
+            <div class="cartcost">
+                <p class="bold">Shipping</p>
+                <p>Free</p>
+            </div>
+            <div class="cartcost">
+                <p class="bold">Total</p>
+                <p id="checkouttotal"></p>
+            </div>
+            <hr class="cartbreakline">
+
+
+            <button id="checkouttoggle" onclick="checkoutShowItems()">Show Details</button>
+
+            <div id="checkouttogglecontent" style="display: none;">
+                <p>This is the content that gets toggled!</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

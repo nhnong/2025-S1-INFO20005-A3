@@ -26,9 +26,22 @@ function changeButtonColor(button, optionsDiv) {
     target.classList.add('productsizebuttonclicked');
 }
 
+
+function toggleMenu() {
+  const menuToggle = document.getElementById('menuiconbutton');
+  const overlayMenu = document.getElementById('overlayhomeheadernav');
+
+  overlayMenu.classList.toggle('active');
+
+
+}
+
+
 cartProducts = {
 
 }
+
+
 
 // record of products
 const products = {
@@ -340,6 +353,7 @@ function saveToCart() {
     quantity: quantityFloat,
     remove: 'remove'+productId,
   }
+
   if (currentProduct.description == "") {
     delete currentProduct.description;
   }
@@ -376,11 +390,20 @@ function displayOverlay(productId) {
 document.addEventListener('DOMContentLoaded', function() {
 
   displayCartItems();
-  // delete items (trash icon)
-  // add quantity +
-  // remove quantity -
-  // inputing value
 
+  displayCheckoutItems();
+
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+
+  let checkoutTotal = parseFloat(localStorage.getItem('cartTotalPrice')) || 0;
+  console.log("Checkout total price:", checkoutTotal);
+  // updating checkout total price
+  if ((document.body.classList.contains("checkoutbody"))&& (checkoutTotal > 0)) {
+    document.getElementById('checkoutsubtotal').textContent = '$' + checkoutTotal.toFixed(2);
+    document.getElementById('checkouttotal').textContent = '$' + checkoutTotal.toFixed(2);
+  }
 
 });
 
@@ -389,10 +412,10 @@ const htmlSnippet = `
     <div class="aligncenter">
       <img class="cartproductimg">
         <div class="cartquantity">
-          <button class="productaddrem" onclick="changequantity(-1)">−</button>
+          <button class="cartproductadd" onclick="changequantity(-1)">−</button>
           <input type="number" class="cartquantityinput" min="1">
-          <button class="productaddrem" onclick="changequantity(1)">+</button>
-          <button class="iconbutton"><img src="symboltrash.png" alt="Delete" class="headericon"></button>   
+          <button class="cartproductrem" onclick="changequantity(1)">+</button>
+          <button class="cartdeleteiconbutton"><img src="symboltrash.png" alt="Delete" class="headericon"></button>   
         </div>
     </div>
     <div>
@@ -427,6 +450,7 @@ function displayCartItems(){
 
       productBreakline = document.createElement("hr");
       productBreakline.className = 'productbreakline'
+      productBreakline.id = 'breakline'+cart[item].id;
 
       // inserting the html display of item added to cart, and assigning user selected details
       productDiv.insertAdjacentHTML('beforeend', htmlSnippet);
@@ -438,7 +462,6 @@ function displayCartItems(){
       quantityCount.id = 'quantity'+cart[item].id;
       quantityCount.value = cart[item].quantity;
 
-
       if (cart[item].description) {
         productDiv.querySelector('.cartproductdesc').textContent = cart[item].description;
       }
@@ -447,8 +470,105 @@ function displayCartItems(){
       outerDiv.appendChild(productBreakline);
 
       totalPrice += cart[item].totalPrice;
+
+      // making buttons responsive 
+      const deleteButton = productDiv.querySelector('.cartdeleteiconbutton');
+      deleteButton.id = cart[item].remove; // Set the ID for the delete button
+      console.log("Delete button ID:", deleteButton.id);
+      console.log("Product ID for delete:", cart[item].id);
+      deleteButton.setAttribute('onclick', `deleteItem('${deleteButton.id}')`);
+
     }
     // displaying total prices
     document.getElementById('cartsubtotal').textContent = '$'+totalPrice.toFixed(2);
     document.getElementById('carttotal').textContent = '$'+totalPrice.toFixed(2);
+    localStorage.setItem('cartTotalPrice', totalPrice);
+    console.log("Total price of cart:", totalPrice);
+}
+
+function deleteItem(deleteButtonId) {
+  let cart = JSON.parse(localStorage.getItem('cartProducts')) || {};
+  console.log("Delete button clicked for ID:", deleteButtonId);
+  // deleteButtonId = deleteButtonId.id;
+  const productId = String(deleteButtonId).slice(6); 
+  console.log("Product ID to delete:", productId);
+  if (!cart[productId]) return; 
+  delete cart[productId]; 
+
+  localStorage.setItem('cartProducts', JSON.stringify(cart));
+  document.querySelector('.cartproductslist').innerHTML = ''; // Clear the cart display
+  displayCartItems(); 
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (!document.body.classList.contains("cartbody")) return;
+
+  let cart = JSON.parse(localStorage.getItem('cartProducts'));
+  let totalPrice = parseFloat(localStorage.getItem('cartTotalPrice')) || 0;
+  if (!cart || 0) return;
+
+  const checkoutButton = document.getElementById('cartcheckout');
+  checkoutButton.addEventListener('click', () => {
+
+
+    if (cart && totalPrice) {
+      window.location.href = 'pagecheckout.html';
+    } else {
+      console.log('Cart is empty');
+    }
+  })
+});
+
+
+function checkoutShowItems() {
+
+  let button = document.getElementById('checkouttoggle');
+  let content = document.getElementById('checkouttogglecontent');
+
+  if (button.textContent == 'Show Details') {
+    content.style.display = 'block';
+    button.textContent = 'Hide Details';
+  }
+  else {
+    content.style.display = 'none';
+    button.textContent = 'Show Details';
+  }
+};
+
+const htmlSnippetCheckout = `
+<img class="checkoutproductimg">
+<div class="checkoutproductdetails">
+  <p id="checkoutproductname" class="bold"></p> 
+  <p id="checkoutproductprice"></p>
+  <p id="checkoutdescription"></p>
+  <p id="checkoutquantity"></p>
+</div>
+`
+
+function displayCheckoutItems() {
+  cart = JSON.parse(localStorage.getItem('cartProducts')) || {};
+  if (!document.body.classList.contains("checkoutbody")) return;
+
+  let outerDiv = document.getElementById('checkouttogglecontent');
+  outerDiv.innerHTML = ''; // Clear previous content
+
+  for (item in cart) {
+    let productDiv = document.createElement("div");
+    productDiv.className = 'checkoutcartproduct';
+    productDiv.insertAdjacentHTML('beforeend', htmlSnippetCheckout);
+
+    productDiv.querySelector('.checkoutproductimg').src = cart[item].image;
+    productDiv.querySelector('#checkoutproductname').textContent = cart[item].title;
+    productDiv.querySelector('#checkoutproductprice').textContent = '$' + cart[item].totalPrice.toFixed(2);
+    productDiv.querySelector('#checkoutquantity').textContent = 'Quantity: ' + cart[item].quantity;
+    if (cart[item].description) {
+      productDiv.querySelector('#checkoutdescription').textContent = cart[item].description;
+    }
+    productBreakline = document.createElement("hr");
+    productBreakline.className = 'productbreakline';
+
+    outerDiv.appendChild(productDiv);
+    outerDiv.appendChild(productBreakline);
+  }
+
 }

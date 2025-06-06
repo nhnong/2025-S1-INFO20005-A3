@@ -10,13 +10,20 @@
 
 <body class="homebody">
     <header class="homeheader">
-        <img src="photologo.png" alt="Logo" class="imglogo">
+        <div class="homemenudiv">
+            <button class="iconbutton" id="menuiconbutton" onclick="toggleMenu()">
+                <img src="symbolmenu.png" alt="Menu" class="headericon" id="menuicon">
+            </button>
+        </div>
+        <a class="logolink" href="pagehome.html">
+            <img src="photologo.png" alt="Logo" class="imglogo">
+        </a>
         <div class="homeheadernav">
             <a href="pagehome.html" class="anav">HOME</a>
-            <a href="pagebooking.html" class="anav">BOOKING</a>
+            <a  class="anav">BOOKING</a>
             <a href="pageshop.html" class="anav">SHOP</a>            
-            <a href="pageabout.html" class="anav">ABOUT</a>
-            <a href="pagecontact.html" class="anav">CONTACT</a>
+            <a  class="anav">ABOUT</a>
+            <a  class="anav">CONTACT</a>
         </div>
         <div class="homeheadersearch">
             <input type="text" placeholder="Search..." class="searchinput">
@@ -24,7 +31,7 @@
                 <button class="iconbutton"> <img src="symbolcart.png" alt="Cart" class="headericon"> </button>
             </a>
         </div>
-    </header>   
+    </header>  
 
 
     <div class="shopbanner rowflex">
@@ -33,9 +40,8 @@
             <label for="filterby" class="shoplabel">Filter by:</label>
             <select id="filterby" class="shopselect">
                 <option value="all">All</option>
-                <option value="paintings">Paintings</option>
-                <option value="tools">Tools</option>
-                <option value="accessories">Accessories</option>
+                <option value="fluid art kits">Fluid Art Kits</option>
+                <option value="decoden kits">Decoden Kits</option>
             </select>
 
             <label for="sortby" class="shoplabel">Sort by:</label>

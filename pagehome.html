@@ -11,13 +11,20 @@
 <body class="homebody">
 
     <header class="homeheader">
-        <img src="photologo.png" alt="Logo" class="imglogo">
+        <div class="homemenudiv">
+            <button class="iconbutton" id="menuiconbutton" onclick="toggleMenu()">
+                <img src="symbolmenu.png" alt="Menu" class="headericon" id="menuicon">
+            </button>
+        </div>
+        <a class="logolink" href="pagehome.html">
+            <img src="photologo.png" alt="Logo" class="imglogo">
+        </a>
         <div class="homeheadernav">
             <a href="pagehome.html" class="anav">HOME</a>
-            <a href="pagebooking.html" class="anav">BOOKING</a>
+            <a  class="anav">BOOKING</a>
             <a href="pageshop.html" class="anav">SHOP</a>            
-            <a href="pageabout.html" class="anav">ABOUT</a>
-            <a href="pagecontact.html" class="anav">CONTACT</a>
+            <a  class="anav">ABOUT</a>
+            <a  class="anav">CONTACT</a>
         </div>
         <div class="homeheadersearch">
             <input type="text" placeholder="Search..." class="searchinput">
@@ -26,12 +33,21 @@
             </a>
         </div>
     </header>
+    <div class="overlayhomeheadernav" id="overlayhomeheadernav">
+        <a href="pagehome.html" class="overlayanav">HOME</a>
+        <a class="overlayanav">BOOKING</a>
+        <a href="pageshop.html" class="overlayanav">SHOP</a>            
+        <a class="overlayanav">ABOUT</a>
+        <a class="overlayanav">CONTACT</a>
+    </div>   
 
     <div class="homebanner">
         <div class="homebanner1">
             <h1 class="bannerh1">We're bringing <br/> Fluid Art to Melbourne!</h1>
             <p class="bannerp">Get ready to unlock your inner artist! Our workshop offers a unique and fun experience where you'll learn the fascinating techniques of fluid art.</p>
-             <button class="buttonpink buttonpinkalignstart">SHOP NOW</button>
+            <a href="pageshop.html">
+                <button class="buttonpink buttonpinkalignstart">SHOP NOW</button>
+            </a> 
         </div>
         <div class="homebanner2">
             <img src="photoframe1.png" alt="Workshop Image" class="imgbanner">
@@ -49,7 +65,9 @@
             </div>
             <div class="homecategory2">
                 <div>
-                    <p>SHOP PRODUCTS</p>
+                    <a href="pageshop.html">
+                        <p>SHOP PRODUCTS</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -68,7 +86,6 @@
         <div class="homebookinginner">
             <img src="photobear8.png" alt="booking2" class="imgbooking">
             <button class="buttonpink homebooking">Book Corporate</button>
-
 
         </div>
         <div class="homebookinginner">

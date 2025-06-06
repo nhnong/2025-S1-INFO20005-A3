@@ -10,13 +10,20 @@
 
 <body class="cartbody">
     <header class="homeheader">
-        <img src="photologo.png" alt="Logo" class="imglogo">
+        <div class="homemenudiv">
+            <button class="iconbutton" id="menuiconbutton" onclick="toggleMenu()">
+                <img src="symbolmenu.png" alt="Menu" class="headericon" id="menuicon">
+            </button>
+        </div>
+        <a class="logolink" href="pagehome.html">
+            <img src="photologo.png" alt="Logo" class="imglogo">
+        </a>
         <div class="homeheadernav">
             <a href="pagehome.html" class="anav">HOME</a>
-            <a href="pagebooking.html" class="anav">BOOKING</a>
+            <a  class="anav">BOOKING</a>
             <a href="pageshop.html" class="anav">SHOP</a>            
-            <a href="pageabout.html" class="anav">ABOUT</a>
-            <a href="pagecontact.html" class="anav">CONTACT</a>
+            <a  class="anav">ABOUT</a>
+            <a  class="anav">CONTACT</a>
         </div>
         <div class="homeheadersearch">
             <input type="text" placeholder="Search..." class="searchinput">
@@ -40,7 +47,6 @@
         <div class="cartordersummary">
             <p>ORDER SUMMARY</p>
             <hr class="cartbreakline">
-            <p>Apply a promotional code?</p>
             <div class="cartcost">
                 <p class="bold">Subtotal</p>
                 <p id="cartsubtotal">-</p>
@@ -53,6 +59,7 @@
                 <p class="bold">Total</p>
                 <p id="carttotal">-</p>
             </div>
+            <button class="buttonpink margintop" id="cartcheckout">Checkout</button>
         </div>
 
     </div>
