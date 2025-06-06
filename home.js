@@ -423,6 +423,7 @@ const htmlSnippet = `
         <p class="shopproducttitle">Product Name</p>
       </a>
       <p class="cartproductprice"></p>
+      <p class="cartproductquantity"></p>
       <p class="cartproductdesc"></p>
     </div>
 `;  
@@ -458,6 +459,7 @@ function displayCartItems(){
       productDiv.querySelector('.cartproductimg').src = cart[item].image;
       productDiv.querySelector('.shopproducttitle').textContent = cart[item].title;
       productDiv.querySelector('.cartproductprice').textContent = '$'+cart[item].totalPrice.toFixed(2);
+      productDiv.querySelector('.cartproductquantity').textContent = 'Quantity: ' + cart[item].quantity;
       quantityCount = productDiv.querySelector('.cartquantityinput');
       quantityCount.id = 'quantity'+cart[item].id;
       quantityCount.value = cart[item].quantity;
